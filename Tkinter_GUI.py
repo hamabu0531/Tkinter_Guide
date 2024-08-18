@@ -122,17 +122,17 @@ if __name__ == "__main__":
     checkbutton3 = tk.Checkbutton(scrollable_frame, text="check3")
     checkbutton1.pack()
     checkbutton2.pack()
-    checkbutton3.pack()
+    checkbutton3.pack(pady=(0, 20))
 
-    labelbutton_label = tk.Label(scrollable_frame, text="<Checkbutton>")
-    labelbutton_label.pack()
+    radiobutton_label = tk.Label(scrollable_frame, text="<Radiobutton>")
+    radiobutton_label.pack()
     selected_option = tk.IntVar(value=1)
 
     # Radiobutton(1つだけonにできるボタン)
     radiobutton1 = tk.Radiobutton(scrollable_frame, text="Option1", variable=selected_option, value=1)
     radiobutton2 = tk.Radiobutton(scrollable_frame, text="Option2", variable=selected_option, value=2)
     radiobutton1.pack()
-    radiobutton2.pack()
+    radiobutton2.pack(pady=(0, 20))
 
     # CanvasとScrollbarを配置
     canvas.pack(side="left", fill="y", expand=True)
