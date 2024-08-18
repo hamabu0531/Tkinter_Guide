@@ -37,7 +37,17 @@ if __name__ == "__main__":
     frame_title = tk.Label(root, text="<Frame>")
     frame_title.pack()
     
-    #Frame(一連のまとまり)
+    #Frame(一連のまとまり. ここではlabelとentryをまとめている)
+    frame = tk.Frame(root, relief="ridge", bd=3, padx=5, pady=5)
+    label = tk.Label(frame, relief="groove", width=15, bg="lightblue", text="下のbuttonとセット")
+    label.pack()
+    f_button = tk.Button(frame, width=15, text="button")
+    f_button.pack()
+    frame.pack(pady=(0, 20))
     
+    entry_title = tk.Label(root, text="<Entry>")
+    entry_title.pack()
+    
+    #entry
     
     root.mainloop()
