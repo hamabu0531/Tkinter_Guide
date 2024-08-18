@@ -82,15 +82,39 @@ if __name__ == "__main__":
     spinbox1.pack()
     spinbox2 = tk.Spinbox(scrollable_frame, from_=-10, to=10, increment=2, state="normal", width=15)
     spinbox2.pack(pady=(0, 20))
-    
+
     toplevel_title = tk.Label(scrollable_frame, text="<Toplevel>\nサブウィンドウを見てね")
     toplevel_title.pack()
-    
+
     # Toplevel(サブウィンドウの表示に使える)
-    toplevel = tk.Toplevel(scrollable_frame)
-    toplevel.title("sub")
-    sub_label = tk.Label(toplevel, text="これはToplevelによって作られたサブウィンドウ")
+    toplevel1 = tk.Toplevel(scrollable_frame)
+    toplevel1.title("sub")
+    sub_label = tk.Label(toplevel1, text="これはToplevelによって作られたサブウィンドウ")
     sub_label.pack(pady=(0, 20))
+
+    listbox_label = tk.Label(scrollable_frame, text="<Listbox>")
+    listbox_label.pack()
+
+    def get_selected(event):
+        n = listbox1.curselection()
+        list_label["text"] = values[n[0]]
+    items = {"English": "Hello",
+             "中文": "你好",
+             "한국어": "안녕하세요",
+             "日本語": "こんにちは"}
+    values = list(items.values())
+
+    # Listbox(一覧表示)
+    list_label = tk.Label(scrollable_frame, text="select item", width=15, bg="yellow")
+    list_label.pack()
+    listbox1 = tk.Listbox(scrollable_frame)
+    for item in items.keys():
+        listbox1.insert(tk.END, item)
+    listbox1.bind("<<ListboxSelect>>", get_selected)
+    listbox1.pack(pady=(0, 20))
+
+    checkbutton_label = tk.Label(scrollable_frame, text="<Checkbutton>")
+    checkbutton_label.pack()
 
     # CanvasとScrollbarを配置
     canvas.pack(side="left", fill="y", expand=True)
