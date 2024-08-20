@@ -1,5 +1,6 @@
 import tkinter as tk
 import ctypes
+from tkinter import ttk
 
 # 直接実行かの判定
 if __name__ == "__main__":
@@ -161,8 +162,8 @@ if __name__ == "__main__":
     canvas_label.pack()
 
     # Canvas(図形、画像の表示)
-    canvas2 = tk.Canvas(scrollable_frame)
-    canvas2.pack()
+    canvas2 = tk.Canvas(scrollable_frame, height=150)
+    canvas2.pack(pady=(0, 20))
     canvas2.create_oval(50, 50, 150, 150, fill="cyan")
     canvas2.create_rectangle(200, 50, 300, 150, fill="red")
     canvas2.create_polygon(310, 150, 400, 50, 450, 150, fill="lightgreen")
@@ -176,6 +177,28 @@ if __name__ == "__main__":
     file_menu.add_command(label="Save", command=None)
     file_menu.add_separator() #区切り線
     file_menu.add_command(label="Exit", command=root.quit)
+
+
+    # ここから下はttkのimportが必要です
+
+    combo_label = tk.Label(scrollable_frame, text="<Combobox>")
+    combo_label.pack()
+
+    # Combobox(広がる選択肢)
+    combo_list = ["Morning", "Afternoon", "Night"]
+    combobox = ttk.Combobox(scrollable_frame, values=combo_list, state="readonly")
+    combobox.pack(pady=(0, 20))
+
+    tree_label = tk.Label(scrollable_frame, text="<Treeview>")
+    tree_label.pack()
+
+    # Treeview
+    tree = ttk.Treeview(scrollable_frame)
+    parent = tree.insert("", "end", text="parent")
+    child = tree.insert(parent, "end", text="child")
+    child2 = tree.insert(parent, "end", text="child2")
+    c2_child = tree.insert(child2, "end", text="c2_child")
+    tree.pack()
 
     # CanvasとScrollbarを配置
     canvas.pack(side="left", fill="y", expand=True)
