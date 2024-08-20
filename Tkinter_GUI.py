@@ -134,6 +134,33 @@ if __name__ == "__main__":
     radiobutton1.pack()
     radiobutton2.pack(pady=(0, 20))
 
+    scale_label = tk.Label(scrollable_frame, text="<Scale>")
+    scale_label.pack()
+    var2 = tk.IntVar(root)
+    s_label = tk.Label(scrollable_frame, textvariable=var2, relief="ridge")
+    s_label.pack()
+
+    # Scale(スライドバー)
+    scale1 = tk.Scale(scrollable_frame, variable=var2)
+    scale1.pack()
+    # 横version
+    scale2 = tk.Scale(scrollable_frame, variable=var2, orient="horizontal")
+    scale2.pack(pady=(0, 20))
+
+    message_label = tk.Label(scrollable_frame, text="<Message>")
+    message_label.pack()
+    comment = "上がMessageでの表示、下がLabelでの表示です。"
+
+    # Message(複数行表示)
+    message = tk.Message(scrollable_frame, relief="raised", aspect=300, text=comment)
+    message.pack()
+    m_label = tk.Label(scrollable_frame, relief="raised", text=comment)
+    m_label.pack(pady=(0, 20))
+
+    combobox_label = tk.Label(scrollable_frame, text="<Combobox>")
+    combobox_label.pack()
+    
+
     # CanvasとScrollbarを配置
     canvas.pack(side="left", fill="y", expand=True)
     scrollbar.pack(side="right", fill="y")
