@@ -157,9 +157,25 @@ if __name__ == "__main__":
     m_label = tk.Label(scrollable_frame, relief="raised", text=comment)
     m_label.pack(pady=(0, 20))
 
-    combobox_label = tk.Label(scrollable_frame, text="<Combobox>")
-    combobox_label.pack()
-    
+    canvas_label = tk.Label(scrollable_frame, text="<Canvas>")
+    canvas_label.pack()
+
+    # Canvas(図形、画像の表示)
+    canvas2 = tk.Canvas(scrollable_frame)
+    canvas2.pack()
+    canvas2.create_oval(50, 50, 150, 150, fill="cyan")
+    canvas2.create_rectangle(200, 50, 300, 150, fill="red")
+    canvas2.create_polygon(310, 150, 400, 50, 450, 150, fill="lightgreen")
+
+    # Menu(上に表示されるメニューバー)
+    menubar = tk.Menu(root)
+    root.config(menu=menubar)
+    file_menu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label="File", menu=file_menu)
+    file_menu.add_command(label="Open", command=None)
+    file_menu.add_command(label="Save", command=None)
+    file_menu.add_separator() #区切り線
+    file_menu.add_command(label="Exit", command=root.quit)
 
     # CanvasとScrollbarを配置
     canvas.pack(side="left", fill="y", expand=True)
