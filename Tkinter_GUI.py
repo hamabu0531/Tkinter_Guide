@@ -198,8 +198,50 @@ if __name__ == "__main__":
     child = tree.insert(parent, "end", text="child")
     child2 = tree.insert(parent, "end", text="child2")
     c2_child = tree.insert(child2, "end", text="c2_child")
-    tree.pack()
+    tree.pack(pady=(0, 20))
 
+    progress_label = tk.Label(scrollable_frame, text="<Progressbar>")
+    progress_label.pack()
+    pb_var = tk.IntVar(scrollable_frame)
+    def update_progress():
+        if pb_var.get() < 100:
+            pb_var.set(pb_var.get()+10)
+        else:
+            pb_var.set(0)
+    def start_progress():
+        if cb2["text"] == "start":
+            pb2.start(interval=10)
+            cb2["text"] = "stop"
+        else:
+            pb2.stop()
+            cb2["text"] = "start"
+
+    # Progressbar(determinate)
+    pb1 = ttk.Progressbar(scrollable_frame, maximum=100, variable=pb_var,
+                          mode="determinate", orient="horizontal")
+    pb1.pack()
+    cb1 = tk.Button(scrollable_frame, text="count up",
+                    command=update_progress)
+    cb1.pack(pady=(0, 20))
+
+    # Progressbar(imdeterminate)
+    pb2 = ttk.Progressbar(scrollable_frame, mode="indeterminate", orient="horizontal")
+    pb2.pack()
+    cb2 = tk.Button(scrollable_frame, text="start", command=start_progress)
+    cb2.pack(pady=(0, 20))
+
+    notebook_label = tk.Label(scrollable_frame, text="<Notebook>")
+    notebook_label.pack()
+
+    # Notebook
+    note = ttk.Notebook(scrollable_frame)
+    note_label = tk.Label(scrollable_frame, text="登録完了しました")
+    note_text = tk.Entry(scrollable_frame)
+    note_button = tk.Button(scrollable_frame, text="登録", command=lambda: note.select(2))
+    note.add(note_text, text="入力欄")
+    note.add(note_button, text="登録確認")
+    note.add(note_label, text="完了", state="hidden")
+    note.pack(pady=(0, 20))
     # CanvasとScrollbarを配置
     canvas.pack(side="left", fill="y", expand=True)
     scrollbar.pack(side="right", fill="y")
