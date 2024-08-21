@@ -233,7 +233,7 @@ if __name__ == "__main__":
     notebook_label = tk.Label(scrollable_frame, text="<Notebook>")
     notebook_label.pack()
 
-    # Notebook
+    # Notebook(小さなタブ)
     note = ttk.Notebook(scrollable_frame)
     note_label = tk.Label(scrollable_frame, text="登録完了しました")
     note_text = tk.Entry(scrollable_frame)
@@ -242,6 +242,19 @@ if __name__ == "__main__":
     note.add(note_button, text="登録確認")
     note.add(note_label, text="完了", state="hidden")
     note.pack(pady=(0, 20))
+
+    lframe_label = tk.Label(scrollable_frame, text="<Labelframe>")
+    lframe_label.pack()
+
+    # Labelframe
+    l_frame = ttk.Labelframe(scrollable_frame, relief="ridge",
+                             text="Labelframe", labelanchor="n")
+    l_label = tk.Label(l_frame, relief="groove", width=15, text="ラベルフレーム", fg="blue")
+    l_label.pack()
+    l_entry = tk.Entry(l_frame, width=20)
+    l_entry.pack()
+    l_frame.pack(padx=3, pady=(3, 20))
+
     # CanvasとScrollbarを配置
     canvas.pack(side="left", fill="y", expand=True)
     scrollbar.pack(side="right", fill="y")
